@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="facebook_app_id">762101519071350</string>
+    <string name="fb_login_protocol_scheme">fb762101519071350</string>
+    <string name="facebook_client_token">76447ac4d9c42840eb048e4fdd9741ad</string>
+    <string name="app_name">Riverpod Practice App</string>
+</resources>
