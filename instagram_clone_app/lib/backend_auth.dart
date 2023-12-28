@@ -4,12 +4,14 @@ import 'package:instagram_clone_app/auth_results.dart';
 import 'package:instagram_clone_app/constants.dart';
 import 'package:instagram_clone_app/user_id.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:developer' as marach show log;
 
 class Authenticator{
   UserId? userId = FirebaseAuth.instance.currentUser?.uid;
   bool get isLoggedIn => userId != null;
   String? get displayName => FirebaseAuth.instance.currentUser?.displayName;
   String? get email => FirebaseAuth.instance.currentUser?.email;
+
 
   Future<void> logOut() async{
     await FirebaseAuth.instance.signOut();
@@ -18,7 +20,7 @@ class Authenticator{
   }
 
   Future<AuthResult> loginWithFacebook() async{
-    final loginResult = await FacebookAuth().login(['profile_data', 'email']);
+    final loginResult = await FacebookAuth().login(['public_profile',]);
     final String? result = loginResult['token'];
     if(result == null){return AuthResult.aborted;}
     else{
@@ -44,8 +46,15 @@ class Authenticator{
 
 
   Future<AuthResult> loginWithGoogle() async{
-    final GoogleSignIn googleSignIn = GoogleSignIn(scopes: [Constants.emailScope]);
+    //marach.log('about to start signing in');
+    final GoogleSignIn googleSignIn = GoogleSignIn(
+      scopes: [Constants.emailScope], 
+      clientId: '310781821333-t1vng3i3j24v6tjdchgclpa3536ppb4e.apps.googleusercontent.com'
+    );
+    if(googleSignIn.currentUser != null){marach.log('This user is already signed in please');}
+    //marach.log(googleSignIn.toString());
     final signInAccount = await googleSignIn.signIn();
+    //marach.log(signInAccount.toString());
     if(signInAccount == null){return AuthResult.aborted;}
     final googleAuth = await signInAccount.authentication;
     final oauthCredentials = GoogleAuthProvider.credential(
