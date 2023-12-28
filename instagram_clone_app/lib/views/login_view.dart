@@ -1,28 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone_app/backend_auth.dart';
-import 'dart:developer' as marach show log;
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:instagram_clone_app/auth_state_provider.dart';
 
-class LoginView extends StatelessWidget {
+
+class LoginView extends ConsumerWidget {
   const LoginView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Homepage'), centerTitle: true),
+      appBar: AppBar(title: const Text('Login View'), centerTitle: true),
       body: Column(
         children: [
           TextButton(
-            onPressed: () async{
-              final result = await Authenticator().loginWithGoogle();
-              print(result.toString());
-            },
+            onPressed: ref.read(authStateProvider.notifier).loginWithGoogle,
             child: const Text('SignIn with Google')
           ),
           TextButton(
-            onPressed: () async{
-              final facebookResult = await Authenticator().loginWithFacebook();
-              print(facebookResult.toString());
-            },
+            onPressed: ref.read(authStateProvider.notifier).loginWithFacebook,
             child: const Text('SignIn with Facebook')
           )
         ]

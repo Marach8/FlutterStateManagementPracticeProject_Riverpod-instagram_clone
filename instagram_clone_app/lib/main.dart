@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true
       ),
       home: Consumer(
-        builder: (context, ref, _) {
+        builder: (__, ref, _) {
           final isLoggedIn = ref.watch(isLoggedInProvider);
           if(isLoggedIn){return const HomeView();}
           else{return const LoginView();}

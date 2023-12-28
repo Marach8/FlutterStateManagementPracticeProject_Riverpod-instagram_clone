@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:instagram_clone_app/auth_state_provider.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -7,7 +9,16 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Homepage'), centerTitle: true),
-      body: Column()
+      body: Consumer(
+        builder: (__, ref, _){
+            return TextButton(
+            onPressed: (){
+              ref.read(authStateProvider.notifier).logOut();
+            },
+            child: const Text('Logout')
+          );
+        }
+      )
     );
   }
 }
