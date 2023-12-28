@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instagram_clone_app/auth_state_provider.dart';
+import 'package:instagram_clone_app/providers/auth_state_provider.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

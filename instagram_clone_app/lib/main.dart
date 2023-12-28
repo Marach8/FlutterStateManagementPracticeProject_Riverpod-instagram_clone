@@ -2,14 +2,23 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instagram_clone_app/firebase_options.dart';
+import 'package:instagram_clone_app/providers/isloading_provider.dart';
+import 'package:instagram_clone_app/screen_and%20_controller/loadingscreen.dart';
 import 'package:instagram_clone_app/views/home_view.dart';
-import 'package:instagram_clone_app/isloggedin_provider.dart';
+import 'package:instagram_clone_app/providers/isloggedin_provider.dart';
 import 'package:instagram_clone_app/views/login_view.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(
+    const ProviderScope(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: MyApp()
+      )
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -28,6 +37,10 @@ class MyApp extends StatelessWidget {
       ),
       home: Consumer(
         builder: (__, ref, _) {
+          ref.listen(isLoadingProvider, (_, isLoading){ print(isLoading);
+            if(isLoading){LoadingScreen().showOverlay(context, 'Loading...');}
+            else{LoadingScreen().hideOverlay();}
+          });
           final isLoggedIn = ref.watch(isLoggedInProvider);
           if(isLoggedIn){return const HomeView();}
           else{return const LoginView();}
