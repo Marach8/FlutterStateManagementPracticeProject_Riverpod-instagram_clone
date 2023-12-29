@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Consumer(
         builder: (__, ref, _) {
-          ref.listen(isLoadingProvider, (_, isLoading){ print(isLoading);
+          ref.listen(isLoadingProvider, (_, isLoading){
             if(isLoading){LoadingScreen().showOverlay(context, 'Loading...');}
             else{LoadingScreen().hideOverlay();}
           });
