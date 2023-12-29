@@ -11,10 +11,10 @@ class RichTextView extends StatelessWidget {
     return RichTextWidget(
       styleForAll: Theme.of(context).textTheme.titleMedium?.copyWith(height: 1.5),
       texts: [
-        BaseText.plain(text: "Don't have an account?"),
-        BaseText.plain(text: "SignUp on"),
-        BaseText.link(text: "Facebook", onTapped: () => launchUrl(Uri.parse('https://wwww.facebook.com/signup'))),
-        BaseText.plain(text: "or create an account on"),
+        BaseText.plain(text: "Don't have an account? "),
+        BaseText.plain(text: "SignUp on "),
+        BaseText.link(text: "Facebook ", onTapped: () => launchUrl(Uri.parse('https://wwww.facebook.com/signup'))),
+        BaseText.plain(text: "or create an account on "),
         BaseText.link(text: "Google", onTapped: () => launchUrl(Uri.parse('https://wwww.google.com/signup'))),
       ]
     );

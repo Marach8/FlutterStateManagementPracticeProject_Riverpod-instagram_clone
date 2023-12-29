@@ -8,7 +8,7 @@ class BaseText{
 
   const BaseText({required this.text, this.style});
 
-  factory BaseText.plain({required String text, TextStyle? style = const TextStyle()}) 
+  factory BaseText.plain({required String text, TextStyle? style = const TextStyle(color: Colors.white60)}) 
     => BaseText(text: text, style: style);
 
   factory BaseText.link({

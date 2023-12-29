@@ -7,7 +7,7 @@ class DividerWithMargin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      children: [Gap(40), Divider(), Gap(40)],
+      children: [Gap(40), Divider(thickness: 0.2, color: Colors.white), Gap(40)],
     );
   }
 }
