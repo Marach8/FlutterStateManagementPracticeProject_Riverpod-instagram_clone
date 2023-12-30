@@ -25,6 +25,6 @@ final thumbnailProvider =
         image = Image.memory(thumb, fit: BoxFit.cover);
         break;
     }
-    final aspectRatio = await image.getAspectRatio();
+    final aspectRatio = await image.getImageAspectRatio();
     return ImageWithAspectRatio(image: image, aspectRatio: aspectRatio);
   });

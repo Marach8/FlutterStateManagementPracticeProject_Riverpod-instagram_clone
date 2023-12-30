@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_app/dialogs/generic_dialog.dart';
+import 'package:instagram_clone_app/enums_and_extensions/enums.dart';
 
 //Extension for the AlertDialogModel and all classes extending it
 extension ShowAlertDialog<T> on AlertDialogModel<T>{
@@ -20,7 +22,7 @@ extension ShowAlertDialog<T> on AlertDialogModel<T>{
 
 
 extension GetImageAspectRatio on Image{
-  Future<double> getAspectRatio() async{
+  Future<double> getImageAspectRatio() async{
     final completer = Completer<double>();
     image.resolve(const ImageConfiguration()).addListener(
       ImageStreamListener((imageInfo, synchronousCall) {
@@ -30,5 +32,23 @@ extension GetImageAspectRatio on Image{
       })
     );
     return completer.future;
+  }
+}
+
+
+extension GetImageDataAspectRatio on Uint8List{
+  Future<double> getBytesASpectRatio(){
+    final image = Image.memory(this);
+    return image.getImageAspectRatio();
+  }
+}
+
+
+extension CollectionNameFromFileType on FileType{
+  String get collectionName {
+    switch(this){
+      case FileType.image: return 'images';
+      case FileType.video: return 'videos';
+    }
   }
 }
