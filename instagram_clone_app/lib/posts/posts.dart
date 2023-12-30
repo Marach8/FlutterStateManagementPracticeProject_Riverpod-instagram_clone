@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone_app/enums/enums.dart';
+import 'package:instagram_clone_app/enums_and_extensions/enums.dart';
 import 'package:instagram_clone_app/posts/post_key.dart';
 
 @immutable

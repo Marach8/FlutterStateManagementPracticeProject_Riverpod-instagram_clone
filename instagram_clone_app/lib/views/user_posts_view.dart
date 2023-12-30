@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instagram_clone_app/enums/enums.dart';
+import 'package:instagram_clone_app/enums_and_extensions/enums.dart';
 import 'package:instagram_clone_app/providers/user_posts_provider.dart';
 import 'package:instagram_clone_app/views/lottie_animation/lottie_subviews.dart';
 import 'package:instagram_clone_app/views/thumbnails/thumbnail_view.dart';
