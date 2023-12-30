@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instagram_clone_app/enums_and_extensions/enums.dart';
 import 'package:instagram_clone_app/providers/user_posts_provider.dart';
 import 'package:instagram_clone_app/views/lottie_animation/lottie_subviews.dart';
-import 'package:instagram_clone_app/views/thumbnails/thumbnail_view.dart';
+import 'package:instagram_clone_app/views/thumbnails/post_thumbnail_view.dart';
 
 class UserPostsView extends ConsumerWidget {
   const UserPostsView({super.key});

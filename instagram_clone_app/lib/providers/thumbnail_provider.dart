@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instagram_clone_app/enums_and_extensions/enums.dart';
+import 'package:instagram_clone_app/enums_and_extensions/extensions.dart';
 import 'package:instagram_clone_app/images/image_withaspectratio.dart';
 import 'package:instagram_clone_app/views/thumbnails/thumbnail_exceptions.dart';
 import 'package:instagram_clone_app/views/thumbnails/thumbnail_request.dart';
@@ -24,4 +25,6 @@ final thumbnailProvider =
         image = Image.memory(thumb, fit: BoxFit.cover);
         break;
     }
+    final aspectRatio = await image.getAspectRatio();
+    return ImageWithAspectRatio(image: image, aspectRatio: aspectRatio);
   });
