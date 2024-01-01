@@ -9,6 +9,7 @@ import 'package:instagram_clone_app/posts/new_post_view.dart';
 import 'package:instagram_clone_app/providers/auth_state_provider.dart';
 import 'package:instagram_clone_app/providers/post_settings_provider.dart';
 import 'package:instagram_clone_app/views/user_posts_view.dart';
+import 'dart:developer' as marach show log;
 
 
 class HomeView extends ConsumerStatefulWidget {
@@ -32,7 +33,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                 final pickedVideo = await ImagePickerHelper.pickVideoFromGallery();
                 if(pickedVideo == null){return;}
                 final newPostSettingsProvider = ref.refresh(postSettingsProvider);
-                if(!mounted){return;}
+                if(!mounted){return;}                
                 Navigator.push(
                   context, 
                   MaterialPageRoute(
@@ -40,7 +41,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                       fileToPost: pickedVideo, fileType: FileType.video
                     )
                   )
-                );
+                );               
               },
               icon: const FaIcon(FontAwesomeIcons.film)
             ),

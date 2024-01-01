@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_app/enums_and_extensions/enums.dart';
 import 'package:instagram_clone_app/posts/post_key.dart';
@@ -20,7 +21,7 @@ class Post{
   Post({required this.postId, required Map<String, dynamic> json})
     : userId = json[PostKey.userId],
       message = json[PostKey.message],
-      createdAt = json[PostKey.createdAt] as DateTime,
+      createdAt = (json[PostKey.createdAt] as Timestamp).toDate(),
       thumbnailUrl= json[PostKey.thumbnailUrl],
       fileUrl = json[PostKey.message],
       fileType = FileType.values.firstWhere((file) 

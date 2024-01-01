@@ -8,19 +8,21 @@ class EmptyContentAnimationViewWithText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text(
-            text, 
-            style: const TextStyle(
-              fontSize: 20, color: Colors.white54
-            )
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              text, 
+              style: const TextStyle(
+                fontSize: 20, color: Colors.white54
+              )
+            ),
           ),
-        ),
-        const EmptyContentAnimationView()
-      ]
+          const EmptyContentAnimationView()
+        ]
+      ),
     );
   }
 }
