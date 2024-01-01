@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_app/enums_and_extensions/enums.dart';
 
