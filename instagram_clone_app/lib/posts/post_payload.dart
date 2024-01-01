@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_app/enums_and_extensions/enums.dart';
 import 'package:instagram_clone_app/posts/post_key.dart';
-import 'package:instagram_clone_app/user_id.dart';
+import 'package:instagram_clone_app/users/user_id.dart';
 
 @immutable 
 class PostPayLoad extends MapView<String, dynamic>{

@@ -1,7 +1,7 @@
 import 'dart:collection' show MapView;
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_app/firebase_fields.dart';
-import 'package:instagram_clone_app/user_id.dart';
+import 'package:instagram_clone_app/users/user_id.dart';
 
 @immutable 
 class UserInfoPayload extends MapView<String, String>{

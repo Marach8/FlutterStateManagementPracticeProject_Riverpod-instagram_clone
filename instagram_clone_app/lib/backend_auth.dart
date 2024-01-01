@@ -2,7 +2,7 @@ import 'package:facebook_auth/facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:instagram_clone_app/auth_results.dart';
 import 'package:instagram_clone_app/constants.dart';
-import 'package:instagram_clone_app/user_id.dart';
+import 'package:instagram_clone_app/users/user_id.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:developer' as marach show log;
 

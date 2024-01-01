@@ -9,3 +9,13 @@ class LogoutAlertDialog extends AlertDialogModel<bool>{
       buttons: {'Cancel': false, 'Logout': true}
     );
 }
+
+
+
+@immutable 
+class DeleteAlertDialog extends AlertDialogModel<bool>{
+  DeleteAlertDialog({required String titleToDelete}): super(
+    title: 'Delete Post!', message: 'Are you sure you want to delete $titleToDelete?',
+    buttons: {'Cance': false, 'Delete': true}
+  );
+}

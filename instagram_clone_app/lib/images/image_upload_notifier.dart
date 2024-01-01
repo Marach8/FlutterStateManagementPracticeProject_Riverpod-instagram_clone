@@ -9,7 +9,7 @@ import 'package:instagram_clone_app/enums_and_extensions/extensions.dart';
 import 'package:instagram_clone_app/firebase_fields.dart';
 import 'package:instagram_clone_app/posts/post_payload.dart';
 import 'package:instagram_clone_app/typedefs.dart';
-import 'package:instagram_clone_app/user_id.dart';
+import 'package:instagram_clone_app/users/user_id.dart';
 import 'package:instagram_clone_app/views/thumbnails/thumbnail_exceptions.dart';
 import 'package:uuid/uuid.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';

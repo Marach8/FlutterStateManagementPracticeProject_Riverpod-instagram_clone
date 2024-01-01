@@ -2,8 +2,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instagram_clone_app/auth_results.dart';
 import 'package:instagram_clone_app/auth_state.dart';
 import 'package:instagram_clone_app/backend_auth.dart';
-import 'package:instagram_clone_app/user_id.dart';
-import 'package:instagram_clone_app/user_info_storage.dart';
+import 'package:instagram_clone_app/users/user_id.dart';
+import 'package:instagram_clone_app/users/user_info_storage.dart';
 
 class AuthStateNotifier extends StateNotifier<AuthState>{
   final Authenticator authenticator = Authenticator();
