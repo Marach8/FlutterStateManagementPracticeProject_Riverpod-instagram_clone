@@ -55,6 +55,7 @@ dependencies:
   share_plus: ^7.2.1
   url_launcher: ^6.2.2
   gap: ^3.0.1
+  firebase_app_check: ^0.2.1+8
 
 dev_dependencies:
   flutter_test:

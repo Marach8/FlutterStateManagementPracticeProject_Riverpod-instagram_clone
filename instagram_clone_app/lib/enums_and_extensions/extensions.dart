@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:instagram_clone_app/dialogs/generic_dialog.dart';
 import 'package:instagram_clone_app/enums_and_extensions/enums.dart';
 
@@ -51,4 +53,10 @@ extension CollectionNameFromFileType on FileType{
       case FileType.video: return 'videos';
     }
   }
+}
+
+
+extension ToFile on Future<XFile?>{
+  Future<File?> toFile() => then((xFile) 
+    => xFile?.path).then((filePath) => filePath != null ? File(filePath) : null);
 }

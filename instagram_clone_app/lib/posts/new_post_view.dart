@@ -51,30 +51,31 @@ class Marach extends ConsumerState<CreateNewPostView>{
           )
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          FileThumbnailView(thumbnailRequest: thumbnailRequest),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: postController,
-              decoration: const InputDecoration(
-                labelText: 'Write about your post here',
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            FileThumbnailView(thumbnailRequest: thumbnailRequest),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: postController,
+                decoration: const InputDecoration(labelText: 'Write about your post here',),
+                style: const TextStyle(color: Colors.white),
+                autofocus: true,
+                maxLines: null,
               ),
-              autofocus: true,
-              maxLines: null,
             ),
-          ),
-          ...PostSettings.values.map((setting) => ListTile(
-            title: Text(setting.title),
-            subtitle: Text(setting.description),
-            trailing: Switch(
-              value: postSettings[setting] ?? false,
-              onChanged: (isOn) => ref.read(postSettingsProvider.notifier).setPostSetting(setting, isOn)
-            )
-          ))
-        ]
+            ...PostSettings.values.map((setting) => ListTile(
+              title: Text(setting.title),
+              subtitle: Text(setting.description),
+              trailing: Switch(
+                value: postSettings[setting] ?? false,
+                onChanged: (isOn) => ref.read(postSettingsProvider.notifier).setPostSetting(setting, isOn)
+              )
+            ))
+          ]
+        ),
       )
     );
   }

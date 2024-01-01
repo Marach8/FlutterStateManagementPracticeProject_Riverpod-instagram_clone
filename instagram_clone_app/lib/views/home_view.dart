@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instagram_clone_app/dialogs/dialogs.dart';
+import 'package:instagram_clone_app/enums_and_extensions/enums.dart';
 import 'package:instagram_clone_app/enums_and_extensions/extensions.dart';
+import 'package:instagram_clone_app/images/image_picker_helper.dart';
+import 'package:instagram_clone_app/posts/new_post_view.dart';
 import 'package:instagram_clone_app/providers/auth_state_provider.dart';
+import 'package:instagram_clone_app/providers/post_settings_provider.dart';
 import 'package:instagram_clone_app/views/user_posts_view.dart';
 
 
@@ -24,11 +28,37 @@ class _HomeViewState extends ConsumerState<HomeView> {
           title: const Text('Instant-Gram'),
           actions: [
             IconButton(
-              onPressed: (){},
+              onPressed: () async{
+                final pickedVideo = await ImagePickerHelper.pickVideoFromGallery();
+                if(pickedVideo == null){return;}
+                final newPostSettingsProvider = ref.refresh(postSettingsProvider);
+                if(!mounted){return;}
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(
+                    builder: (_) => CreateNewPostView(
+                      fileToPost: pickedVideo, fileType: FileType.video
+                    )
+                  )
+                );
+              },
               icon: const FaIcon(FontAwesomeIcons.film)
             ),
             IconButton(
-              onPressed: (){},
+              onPressed: () async{
+                final pickedImage = await ImagePickerHelper.pickImageFromGallery();
+                if(pickedImage == null){return;}
+                final newPostSettingsProvider = ref.refresh(postSettingsProvider);
+                if(!mounted){return;}
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(
+                    builder: (_) => CreateNewPostView(
+                      fileToPost: pickedImage, fileType: FileType.image
+                    )
+                  )
+                );
+              },
               icon: const FaIcon(Icons.add_a_photo_rounded)
             ),
             IconButton(

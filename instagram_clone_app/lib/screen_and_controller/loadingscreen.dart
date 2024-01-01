@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:instagram_clone_app/screen_and%20_controller/loading_screen_controller.dart';
+import 'package:instagram_clone_app/screen_and_controller/loading_screen_controller.dart';
 
 class LoadingScreen{
   LoadingScreen._sharedInstance();
