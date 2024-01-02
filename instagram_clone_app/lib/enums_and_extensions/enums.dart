@@ -1,5 +1,7 @@
 enum FileType{image, video}
 
+enum DateSorting{newestOnTop, oldestOnTop}
+
 enum PostSettings{
   allowLikes(
     title: 'Allow Likes',

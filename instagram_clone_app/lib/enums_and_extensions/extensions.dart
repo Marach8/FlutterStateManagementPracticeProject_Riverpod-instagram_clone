@@ -3,6 +3,8 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:instagram_clone_app/comments/comment.dart';
+import 'package:instagram_clone_app/comments/post_comments_request.dart';
 import 'package:instagram_clone_app/dialogs/generic_dialog.dart';
 import 'package:instagram_clone_app/enums_and_extensions/enums.dart';
 
@@ -59,4 +61,28 @@ extension CollectionNameFromFileType on FileType{
 extension ToFile on Future<XFile?>{
   Future<File?> toFile() => then((xFile) 
     => xFile?.path).then((filePath) => filePath != null ? File(filePath) : null);
+}
+
+
+extension Sorting on Iterable<Comment>{
+  Iterable<Comment> applySorting(RequestForPostAndComment request){
+    if(request.sortByCreatedAt){
+      final sortedDocuments = toList()..sort((a, b){
+        switch(request.dateSorting){          
+          case DateSorting.newestOnTop:
+            return b.createdAt.compareTo(a.createdAt);
+          case DateSorting.oldestOnTop:
+            return a.createdAt.compareTo(b.createdAt);
+        }
+      });
+      return sortedDocuments;
+    }
+    else{return this;}
+  }
+}
+
+
+
+extension DismissKeyboard on Widget{
+  void dismissKeyboard() => FocusManager.instance.primaryFocus?.unfocus();
 }

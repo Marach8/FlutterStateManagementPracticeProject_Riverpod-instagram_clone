@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_app/firebase_fields.dart';
-import 'package:instagram_clone_app/users/user_id.dart';
+import 'package:instagram_clone_app/typedefs.dart';
 import 'package:instagram_clone_app/users/user_info_payload.dart';
 
 @immutable 

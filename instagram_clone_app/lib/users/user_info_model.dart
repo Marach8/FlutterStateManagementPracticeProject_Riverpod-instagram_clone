@@ -2,7 +2,8 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_app/firebase_fields.dart';
-import 'package:instagram_clone_app/users/user_id.dart';
+import 'package:instagram_clone_app/typedefs.dart';
+
 
 @immutable 
 class UserInfoModel extends MapView<String, dynamic>{
