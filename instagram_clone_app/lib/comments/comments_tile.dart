@@ -19,8 +19,11 @@ class CommentTile extends ConsumerWidget {
       data: (userInfo){
         final currentUserId = ref.read(userIdProvider);
         return ListTile(
-          title: Text(userInfo.displayName),
-          subtitle: Text(comment.comment, style: const TextStyle(overflow: TextOverflow.ellipsis)),
+          title: Text(userInfo.displayName, style: const TextStyle(color: Colors.white70),),
+          subtitle: Text(
+            comment.comment,
+            style: const TextStyle(overflow: TextOverflow.ellipsis, color: Colors.white54)
+          ),
           trailing: currentUserId == comment.fromUserId ? IconButton(
             icon: const Icon(Icons.delete_rounded),
             onPressed: () async{

@@ -32,9 +32,7 @@ class PostThumbnailGridView extends StatelessWidget {
         itemCount: posts.length,
         itemBuilder: (_, index){
           final post = posts.elementAt(index);
-          return PostThumbnailView(post: post, onTapped: (){
-            Navigator.push(context, MaterialPageRoute(builder: (_) => PostCommentsView(postId: post.postId)));
-          });
+          return PostThumbnailView(post: post, onTapped: (){});
         }
       ),
     );
