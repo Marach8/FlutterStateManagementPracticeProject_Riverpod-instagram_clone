@@ -8,6 +8,7 @@ import 'package:instagram_clone_app/providers/post_settings_provider.dart';
 import 'package:instagram_clone_app/providers/userid_provider.dart';
 import 'package:instagram_clone_app/views/thumbnails/file_thumbnail_view.dart';
 import 'package:instagram_clone_app/views/thumbnails/thumbnail_request.dart';
+import 'dart:developer' as marach show log;
 
 class CreateNewPostView extends StatefulHookConsumerWidget{
   final File fileToPost;
@@ -38,7 +39,7 @@ class Marach extends ConsumerState<CreateNewPostView>{
             icon: const Icon(Icons.send),
             onPressed: isPostButtonEnabled.value ? () async{
               final userId = ref.read(userIdProvider);
-              if(userId == null){return;}
+              if(userId == null){return;} //marach.log('about to upload');
               final isUploaded = await ref.read(imageUploadProvider.notifier).uploadtoRemote(
                 file: widget.fileToPost, 
                 fileType: widget.fileType,
@@ -46,6 +47,7 @@ class Marach extends ConsumerState<CreateNewPostView>{
                 postSettings: postSettings, 
                 userId: userId
               );
+              //marach.log('I have uploaded');
               if(isUploaded && mounted){Navigator.pop(context);}
             } : null
           )
