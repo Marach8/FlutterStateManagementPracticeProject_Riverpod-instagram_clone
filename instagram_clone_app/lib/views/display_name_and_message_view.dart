@@ -16,7 +16,7 @@ class PostDisplayNameAndMessageView extends ConsumerWidget {
     return userInfoModel.when(
       data: (userInfo) => Padding(
         padding: const EdgeInsets.all(8.0),
-        child: RichTextForImageOrVideo(leftPart: userInfo.displayName, rightPart:post.message),
+        child: RichTwoPartsText(leftPart: userInfo.displayName, rightPart:post.message),
       ), 
       error: (_, __) => const SmallErrorAnimationView(),
       loading: () => const Center(child: CircularProgressIndicator())

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class RichTextForImageOrVideo extends StatelessWidget {
+class RichTwoPartsText extends StatelessWidget {
   final String leftPart, rightPart;
-  const RichTextForImageOrVideo({required this.leftPart, required this.rightPart, super.key});
+  const RichTwoPartsText({required this.leftPart, required this.rightPart, super.key});
 
   @override
   Widget build(BuildContext context) {

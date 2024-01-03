@@ -5,5 +5,9 @@ import 'package:instagram_clone_app/typedefs.dart';
 class LikesDislikesRequest{
   final PostId postId;
   final UserId likedBy;
-  const LikesDislikesRequest({required this.postId, required this.likedBy});
+  
+  const LikesDislikesRequest({
+    required this.postId, 
+    required this.likedBy
+  });
 }
