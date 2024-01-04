@@ -18,28 +18,28 @@ class SearchView extends HookConsumerWidget {
       });
       return (){};
     }, [controller]);
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextField(
-            controller: controller,
-            textInputAction: TextInputAction.search,
-            decoration: InputDecoration(
-              labelText: 'Enter your search term here',
-              suffixIcon: IconButton(
-                icon: const Icon(Icons.clear),
-                onPressed: () {
-                  controller.clear();
-                  dismissKeyboard();
-                },
-              )
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: controller,
+              textInputAction: TextInputAction.search,
+              decoration: InputDecoration(
+                labelText: 'Enter your search term here',
+                suffixIcon: IconButton(
+                  icon: const Icon(Icons.clear),
+                  onPressed: () {
+                    controller.clear();
+                    dismissKeyboard();
+                  },
+                )
+              ),
             ),
           ),
         ),
-        Expanded(
-          child: SearchResultView(searchTerm: searchTerm.value)
-        )
+        SearchResultView(searchTerm: searchTerm.value)
       ]
     );
   }
