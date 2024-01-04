@@ -16,7 +16,6 @@ class PostThumbnailView extends StatelessWidget {
   }
 }
 
-
 class PostThumbnailGridView extends StatelessWidget {
   final Iterable<Post> posts;
   const PostThumbnailGridView({required this.posts, super.key});

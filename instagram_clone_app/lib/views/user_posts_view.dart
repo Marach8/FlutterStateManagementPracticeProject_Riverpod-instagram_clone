@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instagram_clone_app/enums_and_extensions/enums.dart';
 import 'package:instagram_clone_app/providers/user_posts_provider.dart';
 import 'package:instagram_clone_app/views/lottie_animation/lottie_subviews.dart';
 import 'package:instagram_clone_app/views/thumbnails/post_thumbnail_view.dart';
@@ -14,7 +13,6 @@ class UserPostsView extends ConsumerWidget {
     return RefreshIndicator(
       onRefresh: (){
         final refreshedProvider = ref.refresh(userPostProvider);
-        //userPostProvider = refreshedProvider;
         return Future.delayed(const Duration(seconds: 1));
       },
       child: posts.when(

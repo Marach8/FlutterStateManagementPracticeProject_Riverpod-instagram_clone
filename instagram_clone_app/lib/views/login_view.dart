@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instagram_clone_app/providers/auth_state_provider.dart';
 import 'package:instagram_clone_app/views/divider_widget.dart';
 import 'package:instagram_clone_app/views/login_buttons.dart';
-import 'package:instagram_clone_app/views/rich_text/rich_text_view.dart';
+import 'package:instagram_clone_app/views/rich_text/login_rich_text_view.dart';
 
 class LoginView extends ConsumerWidget {
   const LoginView({super.key});

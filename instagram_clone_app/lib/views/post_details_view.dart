@@ -66,14 +66,6 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
                 }
               }
             )
-          // canDeletePosts.when(
-          //   data: (data) => data ? IconButton(
-          //     icon: const Icon(Icons.delete_rounded),
-          //     onPressed: (){}
-          //   ) : const SizedBox.shrink(),
-          //   loading: () => const Center(child: CircularProgressIndicator()),
-          //   error: (_, __) => const SmallErrorAnimationView()
-          // )
         ],
       ),
 
@@ -90,7 +82,7 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
                   children: [
                     data.post.allowLikes ? LikeButton(postId: postId) : const SizedBox.shrink(),
                     data.post.allowComments ? IconButton(
-                      icon: const Icon(Icons.mode_comment_outlined),
+                      icon: const Icon(Icons.mode_comment_outlined, color: Colors.white70),
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(builder: (_) => PostCommentsView(postId: postId))

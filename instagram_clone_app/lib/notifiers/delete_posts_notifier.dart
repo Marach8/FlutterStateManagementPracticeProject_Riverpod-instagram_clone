@@ -25,7 +25,7 @@ class DeletePostStateNotifier extends StateNotifier<IsLoading>{
       await _deleteAllDocuments(postId: post.postId, inCollection: FirebaseCollectionName.likes);
 
       final postsInCollection = await FirebaseFirestore.instance.collection(FirebaseCollectionName.posts)
-        .where(FirebaseFieldName.postId, isEqualTo: post.postId).limit(1).get();
+        .where(FieldPath.documentId, isEqualTo: post.postId).limit(1).get();
       for (final doc in postsInCollection.docs){await doc.reference.delete();}
       return true;
     } catch (_){

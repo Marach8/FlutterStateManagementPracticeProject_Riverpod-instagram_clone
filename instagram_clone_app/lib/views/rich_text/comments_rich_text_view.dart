@@ -9,15 +9,14 @@ class RichTwoPartsText extends StatelessWidget {
     return RichText(
       text: TextSpan(
         style: const TextStyle(
-          color: Colors.white70,
           height: 1.5
         ),
         children: [
           TextSpan(
             text: leftPart,
-            style: const TextStyle(fontWeight: FontWeight.w500)
+            style: const TextStyle(fontWeight: FontWeight.w600, color: Colors.white)
           ),
-          TextSpan(text: ' $rightPart'),          
+          TextSpan(text: ' $rightPart', style: const TextStyle(color: Colors.white60)),          
         ]
       )
     );

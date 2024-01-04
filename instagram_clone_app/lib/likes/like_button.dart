@@ -17,6 +17,7 @@ class LikeButton extends ConsumerWidget {
 
     return hasLiked.when(
       data: (hasLiked) => IconButton(
+        color: Colors.white70,
         icon: Icon(hasLiked? Icons.favorite_rounded : Icons.favorite_outline_rounded),
         onPressed: (){
           final userId = ref.read(userIdProvider);
