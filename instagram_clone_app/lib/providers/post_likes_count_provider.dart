@@ -9,7 +9,7 @@ final postLikesCountProvider = StreamProvider.family.autoDispose<int, PostId> ((
   //Set the default number of likes
   controller.onListen = (){controller.sink.add(0);};
   final sub = FirebaseFirestore.instance.collection(FirebaseCollectionName.likes)
-    .where(FirebaseFieldName, isEqualTo: postId).snapshots()
+    .where(FirebaseFieldName.postId, isEqualTo: postId).snapshots()
     .listen((snapshot){controller.sink.add(snapshot.docs.length);});
     
   ref.onDispose(() {

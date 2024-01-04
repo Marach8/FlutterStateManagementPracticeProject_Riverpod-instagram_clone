@@ -23,7 +23,7 @@ class Post{
       message = json[PostKey.message],
       createdAt = (json[PostKey.createdAt] as Timestamp).toDate(),
       thumbnailUrl= json[PostKey.thumbnailUrl],
-      fileUrl = json[PostKey.message],
+      fileUrl = json[PostKey.fileUrl],
       fileType = FileType.values.firstWhere((file) 
         => file.name == json[PostKey.fileType], orElse: () => FileType.image),
       fileName = json[PostKey.fileName],

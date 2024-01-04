@@ -12,7 +12,7 @@ import 'package:instagram_clone_app/typedefs.dart';
 import 'package:instagram_clone_app/views/thumbnails/thumbnail_exceptions.dart';
 import 'package:uuid/uuid.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
-import 'dart:developer' as marach show log;
+
 
 class ImageUploadNotifier extends StateNotifier<IsLoading>{
   ImageUploadNotifier(): super(false);
@@ -83,11 +83,11 @@ class ImageUploadNotifier extends StateNotifier<IsLoading>{
         originalFileStorageId: originalFileStorageId, 
         postSettings: postSettings
       );
-      marach.log('I want to upload postPayloadd');
+
       await FirebaseFirestore.instance.collection(FirebaseCollectionName.posts)
         .add(postPayLoad);
       return true;
-    } catch(e){marach.log(e.toString()); return false;}
+    } catch(e){return false;}
     finally{isLoading = false;}
   }
 }

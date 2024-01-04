@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instagram_clone_app/providers/post_likes_count_provider.dart';
 import 'package:instagram_clone_app/typedefs.dart';
 import 'package:instagram_clone_app/views/lottie_animation/lottie_subviews.dart';
+import 'dart:developer' as marach show log;
 
 class LikesCountView extends ConsumerWidget {
   final PostId postId;
@@ -17,7 +18,10 @@ class LikesCountView extends ConsumerWidget {
         : '$likesCount people liked this'
       ),
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (_, __) => const SmallErrorAnimationView()
+      error: (error, trace) {
+        marach.log(error.toString()); 
+        marach.log('SPaCE'); marach.log(trace.toString());
+        return const SmallErrorAnimationView();} 
     );
   }
 }

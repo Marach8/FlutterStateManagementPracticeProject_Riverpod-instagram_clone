@@ -4,7 +4,7 @@ import 'package:instagram_clone_app/auth_results.dart';
 import 'package:instagram_clone_app/constants.dart';
 import 'package:instagram_clone_app/typedefs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'dart:developer' as marach show log;
+
 
 class Authenticator{
   UserId? userId = FirebaseAuth.instance.currentUser?.uid;
@@ -46,15 +46,12 @@ class Authenticator{
 
 
   Future<AuthResult> loginWithGoogle() async{
-    //marach.log('about to start signing in');
     final GoogleSignIn googleSignIn = GoogleSignIn(
       scopes: [Constants.emailScope], 
       clientId: '310781821333-t1vng3i3j24v6tjdchgclpa3536ppb4e.apps.googleusercontent.com'
     );
-    if(googleSignIn.currentUser != null){marach.log('This user is already signed in please');}
-    //marach.log(googleSignIn.toString());
+
     final signInAccount = await googleSignIn.signIn();
-    //marach.log(signInAccount.toString());
     if(signInAccount == null){return AuthResult.aborted;}
     final googleAuth = await signInAccount.authentication;
     final oauthCredentials = GoogleAuthProvider.credential(
