@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instagram_clone_app/firebase_options.dart';
 import 'package:instagram_clone_app/providers/isloading_provider.dart';
 import 'package:instagram_clone_app/screen_and_controller/loadingscreen.dart';
-import 'package:instagram_clone_app/views/home_view.dart';
+import 'package:instagram_clone_app/views/mainview.dart';
 import 'package:instagram_clone_app/providers/isloggedin_provider.dart';
 import 'package:instagram_clone_app/views/login_view.dart';
 
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
             else{LoadingScreen().hideOverlay();}
           });
           final isLoggedIn = ref.watch(isLoggedInProvider);
-          if(isLoggedIn){return const HomeView();}
+          if(isLoggedIn){return const MainView();}
           else{return const LoginView();}
         }
       )

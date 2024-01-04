@@ -1,91 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instagram_clone_app/dialogs/dialogs.dart';
-import 'package:instagram_clone_app/enums_and_extensions/enums.dart';
-import 'package:instagram_clone_app/enums_and_extensions/extensions.dart';
-import 'package:instagram_clone_app/images/image_picker_helper.dart';
-import 'package:instagram_clone_app/posts/new_post_view.dart';
-import 'package:instagram_clone_app/providers/auth_state_provider.dart';
-import 'package:instagram_clone_app/providers/post_settings_provider.dart';
-import 'package:instagram_clone_app/views/search_view.dart';
-import 'package:instagram_clone_app/views/user_posts_view.dart';
+import 'package:instagram_clone_app/providers/all_posts_provider.dart';
+import 'package:instagram_clone_app/views/lottie_animation/lottie_subviews.dart';
+import 'package:instagram_clone_app/views/thumbnails/post_thumbnail_view.dart';
 
-
-class HomeView extends ConsumerStatefulWidget {
+class HomeView extends ConsumerWidget {
   const HomeView({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends ConsumerState<HomeView> {
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Instant-Gram'),
-          actions: [
-            IconButton(
-              onPressed: () async{
-                final pickedVideo = await ImagePickerHelper.pickVideoFromGallery();
-                if(pickedVideo == null){return;}
-                final newPostSettingsProvider = ref.refresh(postSettingsProvider);
-                if(!mounted){return;}                
-                Navigator.push(
-                  context, 
-                  MaterialPageRoute(
-                    builder: (_) => CreateNewPostView(
-                      fileToPost: pickedVideo, fileType: FileType.video
-                    )
-                  )
-                );               
-              },
-              icon: const FaIcon(FontAwesomeIcons.film)
-            ),
-            IconButton(
-              onPressed: () async{
-                final pickedImage = await ImagePickerHelper.pickImageFromGallery();
-                if(pickedImage == null){return;}
-                final newPostSettingsProvider = ref.refresh(postSettingsProvider);
-                if(!mounted){return;}
-                Navigator.push(
-                  context, 
-                  MaterialPageRoute(
-                    builder: (_) => CreateNewPostView(
-                      fileToPost: pickedImage, fileType: FileType.image
-                    )
-                  )
-                );
-              },
-              icon: const FaIcon(Icons.add_a_photo_rounded)
-            ),
-            IconButton(
-              onPressed: () async{
-                final shouldLogout = await LogoutAlertDialog()
-                  .showAlertDialog(context).then((value) => value ?? false);
-                shouldLogout ? await ref.read(authStateProvider.notifier).logOut(): {};
-              },
-              icon: const FaIcon(Icons.logout_rounded)
-            )
-          ],
-          bottom: const TabBar(
-            tabs: [
-              Tab(icon: Icon(Icons.person)),
-              Tab(icon: Icon(Icons.search)),
-              Tab(icon: Icon(Icons.home))
-            ]
-          )
-        ),
-        body: const TabBarView(
-          children: [
-            UserPostsView(),
-            SearchView(),
-            UserPostsView()
-          ],
-        )
+  Widget build(BuildContext context, WidgetRef ref) {
+    final posts = ref.watch(allPostsProvider);
+    return RefreshIndicator(
+      onRefresh: () {
+        final refreshedProvider = ref.refresh(allPostsProvider);
+        return Future.delayed(const Duration(seconds: 1));
+      },
+      child: posts.when(
+        data: (data){
+          if(data.isEmpty){
+            return const EmptyContentAnimationViewWithText(text: 'You have not made a post yet');
+          }
+          return PostThumbnailGridView(posts: data);
+        },
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (_, __) => const ErrorAnimationView()
       )
     );
   }
