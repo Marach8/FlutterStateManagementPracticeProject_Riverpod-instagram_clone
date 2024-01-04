@@ -6,6 +6,7 @@ import 'package:instagram_clone_app/typedefs.dart';
 
 final postLikesCountProvider = StreamProvider.family.autoDispose<int, PostId> ((ref, postId){
   final controller = StreamController<int>.broadcast();
+  
   //Set the default number of likes
   controller.onListen = (){controller.sink.add(0);};
   final sub = FirebaseFirestore.instance.collection(FirebaseCollectionName.likes)

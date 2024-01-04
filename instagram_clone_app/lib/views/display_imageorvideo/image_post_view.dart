@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_app/posts/posts.dart';
 
-
 class PostImageView extends StatelessWidget {
   final Post post;
   const PostImageView({required this.post, super.key});

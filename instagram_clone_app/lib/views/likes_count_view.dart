@@ -13,9 +13,13 @@ class LikesCountView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final likesCount = ref.watch(postLikesCountProvider(postId));
     return likesCount.when(
-      data: (likesCount) => Text(
-        likesCount == 1 ? '$likesCount person liked this'
-        : '$likesCount people liked this'
+      data: (likesCount) => Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        child: Text(
+          likesCount == 1 ? '$likesCount person liked this'
+          : '$likesCount people liked this',
+          style: const TextStyle(color: Colors.white38)
+        ),
       ),
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (error, trace) {

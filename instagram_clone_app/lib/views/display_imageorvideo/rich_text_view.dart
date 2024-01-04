@@ -17,7 +17,7 @@ class RichTwoPartsText extends StatelessWidget {
             text: leftPart,
             style: const TextStyle(fontWeight: FontWeight.w500)
           ),
-          TextSpan(text: rightPart),          
+          TextSpan(text: ' $rightPart'),          
         ]
       )
     );

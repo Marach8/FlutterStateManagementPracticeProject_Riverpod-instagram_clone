@@ -77,7 +77,7 @@ class ImageUploadNotifier extends StateNotifier<IsLoading>{
         thumbnailUrl: await thumbnailRef.getDownloadURL(), 
         fileUrl: await originalFileRef.getDownloadURL(),
         fileName: fileName, 
-        fileType: fileType.toString(), 
+        fileType: fileType.name, 
         thumbnailStorageId: thumbnailStorageId,
         aspectRatio: thumbnailAspectRatio, 
         originalFileStorageId: originalFileStorageId, 

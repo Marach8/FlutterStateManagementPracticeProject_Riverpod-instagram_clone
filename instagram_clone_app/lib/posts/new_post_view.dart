@@ -8,7 +8,7 @@ import 'package:instagram_clone_app/providers/post_settings_provider.dart';
 import 'package:instagram_clone_app/providers/userid_provider.dart';
 import 'package:instagram_clone_app/views/thumbnails/file_thumbnail_view.dart';
 import 'package:instagram_clone_app/views/thumbnails/thumbnail_request.dart';
-//import 'dart:developer' as marach show log;
+
 
 class CreateNewPostView extends StatefulHookConsumerWidget{
   final File fileToPost;
