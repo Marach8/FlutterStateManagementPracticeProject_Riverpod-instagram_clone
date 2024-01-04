@@ -74,17 +74,17 @@ class _HomeViewState extends ConsumerState<MainView> {
           ],
           bottom: const TabBar(
             tabs: [
-              Tab(icon: Icon(Icons.person)),
+              Tab(icon: Icon(Icons.home)),
               Tab(icon: Icon(Icons.search)),
-              Tab(icon: Icon(Icons.home))
+              Tab(icon: Icon(Icons.person)),
             ]
           )
         ),
         body: const TabBarView(
           children: [
-            UserPostsView(),
+            HomeView(),
             SearchView(),
-            HomeView()
+            UserPostsView(),
           ],
         )
       )
