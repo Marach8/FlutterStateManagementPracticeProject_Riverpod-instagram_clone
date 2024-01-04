@@ -8,6 +8,7 @@ import 'package:instagram_clone_app/images/image_picker_helper.dart';
 import 'package:instagram_clone_app/posts/new_post_view.dart';
 import 'package:instagram_clone_app/providers/auth_state_provider.dart';
 import 'package:instagram_clone_app/providers/post_settings_provider.dart';
+import 'package:instagram_clone_app/views/search_view.dart';
 import 'package:instagram_clone_app/views/user_posts_view.dart';
 
 
@@ -81,7 +82,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
         body: const TabBarView(
           children: [
             UserPostsView(),
-            UserPostsView(),
+            SearchView(),
             UserPostsView()
           ],
         )
