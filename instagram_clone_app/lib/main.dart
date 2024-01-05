@@ -2,7 +2,9 @@ import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:instagram_clone_app/auth_results.dart';
 import 'package:instagram_clone_app/firebase_options.dart';
+import 'package:instagram_clone_app/providers/auth_state_provider.dart';
 import 'package:instagram_clone_app/providers/isloading_provider.dart';
 import 'package:instagram_clone_app/screen_and_controller/loadingscreen.dart';
 import 'package:instagram_clone_app/views/mainview.dart';
@@ -43,7 +45,7 @@ class MyApp extends StatelessWidget {
             if(isLoading){LoadingScreen().showOverlay(context, 'Loading...');}
             else{LoadingScreen().hideOverlay();}
           });
-          final isLoggedIn = ref.watch(isLoggedInProvider);
+          final isLoggedIn = ref.watch(authStateProvider).result == AuthResult.success;
           if(isLoggedIn){return const MainView();}
           else{return const LoginView();}
         }
