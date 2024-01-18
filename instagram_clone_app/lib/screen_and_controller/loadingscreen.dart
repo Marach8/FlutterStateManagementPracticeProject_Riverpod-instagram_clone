@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:instagram_clone_app/screen_and_controller/loading_screen_controller.dart';
@@ -21,7 +20,9 @@ class LoadingScreen{
     controller = null;
   }
 
-  LoadingScreenController? _showOverlay(BuildContext context, String text){
+  LoadingScreenController? _showOverlay(
+    BuildContext context, String text
+  ){
     final state = Overlay.of(context);
     if(!state.mounted){return null;}
 
